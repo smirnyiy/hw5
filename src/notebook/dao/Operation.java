@@ -3,8 +3,8 @@ package notebook.dao;
 import java.util.List;
 
 /**
- * Data Access Object (DAO) слой, с методами для работы с БД
- * @param <T> тип объекта для чтения/записи.
+ * Data Access Object (DAO) СЃР»РѕР№ СЃ РјРµС‚РѕРґРѕРј Р±Рґ
+ * @param <T> пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ.
  */
 public interface Operation<T> {
     List<T> readAll();
