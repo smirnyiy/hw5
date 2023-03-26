@@ -3,18 +3,25 @@ package notebook.util;
 import java.io.File;
 
 public class DBConnector {
-    public static final String DB_PATH = "db.txt";
-    public static void createDB() {
+    public String dbPath;
+
+    public DBConnector(String dbPath) {
+        this.dbPath = dbPath;
+    }
+
+    public DBConnector() {
+        this("db.txt");
+    }
+
+    public void createDB() {
         try {
-            File db = new File(DB_PATH);
+            File db = new File(dbPath);
             if (db.createNewFile()) {
                 System.out.println("DB created");
-            }
-            else {
+            } else {
                 System.out.println("DB already exists");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }

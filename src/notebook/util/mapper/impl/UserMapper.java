@@ -1,17 +1,28 @@
-package notebook.mapper.impl;
+package notebook.util.mapper.impl;
 
-import notebook.mapper.Mapper;
+import notebook.util.mapper.Mapper;
 import notebook.model.User;
 
 public class UserMapper implements Mapper<User, String> {
+    private final String separator;
+
+    public UserMapper(String sep) {
+        this.separator = sep;
+    }
+
+    public UserMapper() {
+        this(",");
+    }
+
     @Override
     public String toInput(User user) {
-        return String.format("%s,%s,%s,%s", user.getId(), user.getFirstName(), user.getLastName(), user.getPhone());
+        return String.join(separator, user.getId().toString(), user.getFirstName(), user.getLastName(),
+                user.getPhone());
     }
 
     @Override
     public User toOutput(String s) {
-        String[] lines = s.split(";");
+        String[] lines = s.split(separator);
         long id;
         if (isDigit(lines[0])) {
             id = Long.parseLong(lines[0]);
